@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PadMovement : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed = 0.008f;
     private float maxPos = 5;
 
     [SerializeField]
@@ -16,15 +16,16 @@ public class PadMovement : MonoBehaviour
     }
     void Update()
     {
-        var x = Input.GetAxis("LHorizontal") * speed;
-        var z = Input.GetAxis("LVertical") * speed;
-        var movement = new Vector3(x, 0, z);
-        //var pos = camera.transform.TransformDirection(movement);
-        var pos = camera.ScreenToWorldPoint(this.transform.position + movement);
-        pos.y = 0;
+        var x = Input.GetAxis("LHorizontal");
+        var z = Input.GetAxis("LVertical");
+        var cameraDiff = new Vector3(-x, z) * speed;
+        var padWorldPos = this.transform.position;
+        var padCameraPos = camera.WorldToViewportPoint(padWorldPos);
+        var padMovedCamera = padCameraPos + cameraDiff;
+        var padWordMoved = camera.ViewportToWorldPoint(padMovedCamera);
+        padWordMoved.y = 0;
 
-        var position = this.transform.position + pos;
-        this.transform.position = this.Clamp(position, maxPos);
+        this.transform.position = this.Clamp(padWordMoved, maxPos);
     }
 
     private Vector3 Clamp(Vector3 vec, float clamp)

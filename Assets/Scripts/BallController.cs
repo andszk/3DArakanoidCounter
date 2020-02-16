@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public float speed = 10;
     private Rigidbody rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,17 @@ public class BallController : MonoBehaviour
         {
             Debug.Log("wohoo!!");
             this.transform.position = new Vector3(0, 0.5f, 0);
-            this.rigidbody.velocity = new Vector3(Random.value, 5, Random.value);
+            this.rigidbody.velocity = new Vector3(Random.value, 1, Random.value);
         }
+    }
+
+    void LateUpdate()
+    {
+        rigidbody.velocity = speed * (rigidbody.velocity.normalized);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
     }
 }

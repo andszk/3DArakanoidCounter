@@ -5,27 +5,32 @@ using UnityEngine;
 
 public class PadMovement : MonoBehaviour
 {
-    public float speed = 0.008f;
+    public float speed = 0.006f;
     private float maxPos = 5;
+    private float yContraction;
 
     [SerializeField]
     public Camera camera;
     void Start()
     {
-        
+        double y = 1 / Math.Sin((Math.PI / 180) * camera.transform.rotation.eulerAngles.x);
+        yContraction = (float) y;
     }
     void Update()
     {
-        var x = Input.GetAxis("LHorizontal");
+        var x = -Input.GetAxis("LHorizontal");
         var z = Input.GetAxis("LVertical");
-        var cameraDiff = new Vector3(-x, z) * speed;
-        var padWorldPos = this.transform.position;
-        var padCameraPos = camera.WorldToViewportPoint(padWorldPos);
-        var padMovedCamera = padCameraPos + cameraDiff;
-        var padWordMoved = camera.ViewportToWorldPoint(padMovedCamera);
-        padWordMoved.y = 0;
+        if (x != 0 || z != 0)
+        {
+            var padWorldPos = this.transform.position;
+            var padCameraPos = camera.WorldToViewportPoint(padWorldPos);
+            var cameraDiff = new Vector3(x, z * yContraction, camera.nearClipPlane) * speed;
+            var padMovedCamera = padCameraPos + cameraDiff;
+            var padWordMoved = camera.ViewportToWorldPoint(padMovedCamera);;
+            padWordMoved.y = 0;
 
-        this.transform.position = this.Clamp(padWordMoved, maxPos);
+            this.transform.position = this.Clamp(padWordMoved, maxPos);
+        }
     }
 
     private Vector3 Clamp(Vector3 vec, float clamp)

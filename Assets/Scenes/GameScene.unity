@@ -146,7 +146,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458597348}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -239,7 +239,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660040719}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 731345006}
   - component: {fileID: 731345005}
   - component: {fileID: 731345009}
+  - component: {fileID: 731345010}
   m_Layer: 0
   m_Name: Pad
   m_TagString: Untagged
@@ -424,7 +425,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731345004}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -505,6 +506,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.006
   camera: {fileID: 963194227}
+--- !u!54 &731345010
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731345004}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &955800092
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +548,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955800092}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -676,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0.07956219, y: 0.89753294, z: -0.20951343, w: -0.37974814}
-  m_LocalPosition: {x: 14.47, y: 10.68, z: 14.23}
+  m_LocalPosition: {x: 11.56, y: 8.61, z: 11.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -721,7 +738,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132237848}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -814,7 +831,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398693348}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1005,12 +1022,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &1737183213
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1018,7 +1035,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737183211}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1042,7 +1059,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 278134159259b9f478eabb2bed38f9e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1124,7 +1141,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054115802}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad4e81e20bef5b546b347264c55f432b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

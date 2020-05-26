@@ -6,7 +6,7 @@ using UnityEngine;
 public class PadMovement : MonoBehaviour
 {
     public float speed = 0.006f;
-    private float maxPos = 5;
+    private float maxPos = 4;
     private float yContraction;
 
     [SerializeField]
@@ -35,16 +35,8 @@ public class PadMovement : MonoBehaviour
 
     private Vector3 Clamp(Vector3 vec, float clamp)
     {
-        if (Math.Abs(vec.x) > clamp)
-        {
-            vec.x = vec.normalized.x * clamp;
-        }
-
-        if (Math.Abs(vec.z) > clamp)
-        {
-            vec.z = vec.normalized.z * clamp;
-        }
-
+        vec.x = Mathf.Clamp(vec.x, -clamp, clamp);
+        vec.z = Mathf.Clamp(vec.z, -clamp, clamp);
         return vec;
     }
 }

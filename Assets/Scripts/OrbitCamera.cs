@@ -1,70 +1,35 @@
-﻿//using UnityEngine;
-//using System.Collections;
-
-//// maintains position offset while orbiting around target
-
-//public class OrbitCamera : MonoBehaviour {
-//	[SerializeField] private Transform target;
-
-//	public float rotSpeed = 1.5f;
-
-//	private float _rotY;
-//	private Vector3 _offset;
-
-//	// Use this for initialization
-//	void Start() {
-//		_rotY = transform.eulerAngles.y;
-//		_offset = target.position - transform.position;
-//	}
-
-//	// Update is called once per frame
-//	void LateUpdate() {
-//		float horInput = Input.GetAxis("Horizontal");
-//		if (horInput != 0) {
-//			_rotY += horInput * rotSpeed;
-//		} else {
-//			_rotY += Input.GetAxis("Mouse X") * rotSpeed * 3;
-//		}
-
-//		Quaternion rotation = Quaternion.Euler(0, _rotY, 0);
-//		transform.position = target.position - (rotation * _offset);
-//		transform.LookAt(target);
-//	}
-//}
-
-using UnityEngine;
-using System.Collections;
-
-// maintains position offset while orbiting around target
-
+﻿using UnityEngine;
 public class OrbitCamera : MonoBehaviour
 {
+	[SerializeField, Range(1f, 25f)]
+	float distance = 15f;
+
+	[SerializeField, Range(150f, 1500f)]
+	public float rotationSpeed = 100f;
+
+	[SerializeField]
+	public float minRotationVertical = 0f;
+
+	[SerializeField]
+	public float maxRotationVertical = 90f;
+
 	private Vector3 target = new Vector3(0, 0, 0);
+	private Vector2 orbitAngles = new Vector2(45f, 0f);
+	private const float e = 0.001f;
 
-	public float rotSpeed = 1.5f;
-
-	private float _rotY;
-	private Vector3 _offset;
-
-	// Use this for initialization
-	void Start()
-	{
-		_rotY = transform.eulerAngles.y;
-		_offset = target - transform.position;
-	}
-
-	// Update is called once per frame
 	void LateUpdate()
 	{
-		float horInput = Input.GetAxis("CameraHorizontal");
-		if (horInput != 0)
+		float y = -Input.GetAxis("CameraVertical");			
+		float z = Input.GetAxis("CameraHorizontal");
+		if (y < -e || y > e || z < -e || z > e)
 		{
-			_rotY += horInput * rotSpeed;
+			Vector2 input = new Vector2(2*y, z);
+			orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
+			orbitAngles.x = Mathf.Clamp(orbitAngles.x, minRotationVertical, maxRotationVertical);
+			Quaternion lookRotation = Quaternion.Euler(orbitAngles);
+			Vector3 lookDirection = lookRotation * Vector3.forward;
+			Vector3 lookPosition = target - lookDirection * distance;
+			transform.SetPositionAndRotation(lookPosition, lookRotation);
 		}
-
-		Quaternion rotation = Quaternion.Euler(0, _rotY, 0);
-		transform.position = target - (rotation * _offset);
-		transform.LookAt(target);
 	}
 }
-

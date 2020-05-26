@@ -7,11 +7,10 @@ public class BlockManager : MonoBehaviour
     [SerializeField]
     public Transform brick;
 
-    //public float offset = 1.5f;
     public int numberOfBlocksX = 4;
     public int numberOfBlocksY = 5;
-
     private float maxPos = 4.5f;
+    private List<Transform> cubes = new List<Transform>();
 
     void Start()
     {
@@ -29,6 +28,8 @@ public class BlockManager : MonoBehaviour
                                            2,
                                            startY + j * (blockSize + offsetY));
                 var cube = Instantiate(brick, position, Quaternion.identity);
+                cube.SetParent(this.transform);
+                cubes.Add(cube);
 
                 if (i==0 && j==0)
                 {
@@ -37,8 +38,6 @@ public class BlockManager : MonoBehaviour
             }
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         

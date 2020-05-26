@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c23ced66c1b8eb4981e25903af1e7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brick: {fileID: 6383131967575893047, guid: 0977c07f96350ae4da648d27754b596b, type: 3}
+  brick: {fileID: 4589746189362837385, guid: c263a90d7cffa014fb062a045b075a47, type: 3}
   numberOfBlocksX: 4
   numberOfBlocksY: 5
 --- !u!1 &458597348
@@ -382,7 +382,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -759,7 +759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a53cde1f227d3a47978e073e9ad316c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 1.5
+  distance: 17
+  rotationSpeed: 170
+  minRotationVertical: 0
+  maxRotationVertical: 90
 --- !u!1 &1132237848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1055,7 @@ Transform:
   m_GameObject: {fileID: 1737183211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -1069,7 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e7b1fbb2ef4bc4f8a12bb2338820b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
 --- !u!1 &2054115802
 GameObject:
   m_ObjectHideFlags: 0

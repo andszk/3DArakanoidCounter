@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    [SerializeField, Range(5f, 25f)]
     public float speed = 10;
+
     private Rigidbody rigidbody;
-    // Start is called before the first frame update
     void Start()
     {
         this.rigidbody = this.GetComponent<Rigidbody>();
@@ -16,7 +17,6 @@ public class BallController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton0))
         {
-            Debug.Log("wohoo!!");
             this.transform.position = new Vector3(0, 0.5f, 0);
             this.rigidbody.velocity = new Vector3(Random.value, 1, Random.value);
         }
@@ -29,6 +29,6 @@ public class BallController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 }

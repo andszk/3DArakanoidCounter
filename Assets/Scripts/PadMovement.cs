@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PadMovement : MonoBehaviour
 {
-    public float speed = 0.006f;
+    [SerializeField, Range(1.5f, 2.5f)]
+    public float speed = 1.8f;
+
     private float maxPos = 4;
     private float yContraction;
 
@@ -24,7 +26,7 @@ public class PadMovement : MonoBehaviour
         {
             var padWorldPos = this.transform.position;
             var padCameraPos = camera.WorldToViewportPoint(padWorldPos);
-            var cameraDiff = new Vector3(x, z * yContraction, camera.nearClipPlane) * speed;
+            var cameraDiff = new Vector3(x, z * yContraction, camera.nearClipPlane) * speed * Time.unscaledDeltaTime;
             var padMovedCamera = padCameraPos + cameraDiff;
             var padWordMoved = camera.ViewportToWorldPoint(padMovedCamera);;
             padWordMoved.y = 0;

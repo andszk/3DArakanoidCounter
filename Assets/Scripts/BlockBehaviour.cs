@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class BlockBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    public Transform powerUpPrefab;
+
     private int count = 4;
     private List<TextMesh> textMeshes = new List<TextMesh>();
 
@@ -21,6 +24,9 @@ public class BlockBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        var powerUp = Instantiate(powerUpPrefab);
+        powerUp.transform.position = this.transform.position;
+
         count--;
         textMeshes.ToList().ForEach(mesh => mesh.text = count.ToString());
         if(count == 0)

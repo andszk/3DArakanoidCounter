@@ -25,7 +25,7 @@ public class BlockManager : MonoBehaviour
             for (int j = 0; j < numberOfBlocksY; j++)
             {
                 var position = new Vector3(startX + i* (blockSize + offsetX), 
-                                           2,
+                                           5,
                                            startY + j * (blockSize + offsetY));
                 var cube = Instantiate(brick, position, Quaternion.identity);
                 cube.SetParent(this.transform);

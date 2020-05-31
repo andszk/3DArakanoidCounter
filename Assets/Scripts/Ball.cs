@@ -8,12 +8,10 @@ public class Ball : MonoBehaviour
     public event EventHandler<BallEventArgs> BallFallen;
     void Start()
     {
-        
     }
 
     void Update()
     {
-        
     }
 
     void OnTriggerEnter(Collider other)

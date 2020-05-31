@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class PadMovement : MonoBehaviour
 {
-    [SerializeField, Range(1.5f, 2.5f)]
+    [SerializeField, Range(1.0f, 2.5f)]
     public float speed = 1.8f;
 
     private float maxPos = 4;
     private float yContraction;
 
     [SerializeField]
-    public Camera camera;
+    public new Camera camera;
     void Start()
     {
         double y = 1 / Math.Sin((Math.PI / 180) * camera.transform.rotation.eulerAngles.x);

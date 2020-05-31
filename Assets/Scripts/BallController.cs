@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -7,28 +8,42 @@ public class BallController : MonoBehaviour
     [SerializeField, Range(5f, 25f)]
     public float speed = 10;
 
-    private Rigidbody rigidbody;
+    [SerializeField]
+    public Transform ballPrefab;
+
+    private List<Transform> balls = new List<Transform>();
     void Start()
     {
-        this.rigidbody = this.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton0))
         {
-            this.transform.position = new Vector3(0, 0.5f, 0);
-            this.rigidbody.velocity = new Vector3(Random.value, 1, Random.value);
+            var ball = Instantiate(ballPrefab);
+
+            ball.GetComponent<Rigidbody>().velocity = new Vector3(Random.value, 1, Random.value);
+            ball.transform.position = new Vector3(0, 0.5f, 0);
+            ball.GetComponent<Ball>().BallFallen += HandleBallFallen;
+            ball.SetParent(this.transform);
+            balls.Add(ball);
         }
     }
 
     void LateUpdate()
     {
-        rigidbody.velocity = speed * (rigidbody.velocity.normalized);
+        foreach(var ball in balls)
+        {
+            var rigidbody = ball.GetComponent<Rigidbody>();
+            rigidbody.velocity = speed * (rigidbody.velocity.normalized);
+        }
+        
     }
 
-    void OnTriggerEnter(Collider other)
+    private void HandleBallFallen(object sender, BallEventArgs e)
     {
-        //Destroy(this.gameObject);
+        var ball = balls.Single(b => b.gameObject == e.GameObject);
+        balls.Remove(ball);
+        Destroy(ball.gameObject);
     }
 }

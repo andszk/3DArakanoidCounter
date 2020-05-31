@@ -41,7 +41,7 @@ public class BlockBehaviour : MonoBehaviour
 
             textMeshes[i].text = count.ToString();
             textMeshes[i].anchor = TextAnchor.MiddleCenter;
-            //for clear rendering, characterSize=1 is pixelated
+            //for clear rendering, with standard characterSize=1 font is pixelated
             textMeshes[i].characterSize = 0.05f;
             textMeshes[i].fontSize = 150;
         }

@@ -24,14 +24,17 @@ public class BlockBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        var powerUp = Instantiate(powerUpPrefab);
-        powerUp.transform.position = this.transform.position;
-
-        count--;
-        textMeshes.ToList().ForEach(mesh => mesh.text = count.ToString());
-        if(count == 0)
+        if (other.transform.name.Contains("Ball"))
         {
-            Destroy(this.gameObject);
+            var powerUp = Instantiate(powerUpPrefab);
+            powerUp.transform.position = this.transform.position;
+
+            count--;
+            textMeshes.ToList().ForEach(mesh => mesh.text = count.ToString());
+            if (count == 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

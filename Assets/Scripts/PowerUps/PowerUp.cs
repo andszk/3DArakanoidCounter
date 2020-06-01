@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public abstract class PowerUp : ScriptableObject
+    public abstract class PowerUp : MonoBehaviour
     {
         public abstract void ResolveEffect();
     }

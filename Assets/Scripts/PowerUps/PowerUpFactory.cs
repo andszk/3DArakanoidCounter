@@ -6,6 +6,6 @@ internal class PowerUpFactory
 {
     internal static PowerUp GetRandomPowerUp()
     {
-        return new TripleBalls();
+        return new DoublePadSize();
     }
 }

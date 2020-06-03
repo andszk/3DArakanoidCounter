@@ -10,8 +10,12 @@ public class BlockBehaviour : MonoBehaviour
     [SerializeField]
     public Transform powerUpPrefab;
 
+    [SerializeField, Range(0, 100)]
+    public int dropChance = 30;
+
     private int count = 4;
     private List<TextMesh> textMeshes = new List<TextMesh>();
+    private static System.Random rnd = new System.Random();
 
     void Start()
     {
@@ -26,10 +30,8 @@ public class BlockBehaviour : MonoBehaviour
     {
         if (other.transform.name.Contains("Ball"))
         {
-            var powerUp = Instantiate(powerUpPrefab);
-            powerUp.transform.position = this.transform.position;
-
             count--;
+            GeneratePowerUp();
             textMeshes.ToList().ForEach(mesh => mesh.text = count.ToString());
             if (count == 0)
             {
@@ -45,7 +47,16 @@ public class BlockBehaviour : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void CreateTextMeshes(float scale)
+    private void GeneratePowerUp()
+    {
+        if (rnd.Next(0,100) < dropChance)
+        {
+            var powerUp = Instantiate(powerUpPrefab);
+            powerUp.transform.position = this.transform.position;
+        }
+    }
+
+    private void CreateTextMeshes(float scale)
     {
         
         for (int i = 0; i < 4; i++)

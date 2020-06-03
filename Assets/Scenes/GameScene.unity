@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a53cde1f227d3a47978e073e9ad316c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 17
+  distance: 19
   rotationSpeed: 170
   minRotationVertical: 0
   maxRotationVertical: 90

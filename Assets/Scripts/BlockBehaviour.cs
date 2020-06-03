@@ -33,9 +33,16 @@ public class BlockBehaviour : MonoBehaviour
             textMeshes.ToList().ForEach(mesh => mesh.text = count.ToString());
             if (count == 0)
             {
+                this.transform.parent.GetComponent<BlockManager>().Cubes.Remove(this.transform);
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        this.transform.parent.GetComponent<BlockManager>().Cubes.Remove(this.transform);
+        Destroy(this.gameObject);
     }
 
     void CreateTextMeshes(float scale)

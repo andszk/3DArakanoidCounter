@@ -10,7 +10,7 @@ public class BlockManager : MonoBehaviour
     public int numberOfBlocksX = 4;
     public int numberOfBlocksY = 5;
     private float maxPos = 4.5f;
-    private List<Transform> cubes = new List<Transform>();
+    public List<Transform> Cubes { get; set; }  = new List<Transform>();
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class BlockManager : MonoBehaviour
                                            startY + j * (blockSize + offsetY));
                 var cube = Instantiate(brick, position, Quaternion.identity);
                 cube.SetParent(this.transform);
-                cubes.Add(cube);
+                Cubes.Add(cube);
 
                 if (i==0 && j==0)
                 {

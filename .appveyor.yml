@@ -4,7 +4,7 @@ before_build:
  - ls
  
 build:
-  project: 3D&#x20;Arkanoid&#x20;Counter.sln
+  project: 3DArkanoidCounter.sln
   verbosity: minimal
 
 test_script:
